@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Balaji Pest Control 🛡️
 
-## Getting Started
+A modern, fast, and fully responsive landing page for **Balaji Pest Control** — providing professional pest management and anti-termite solutions across Delhi, Gurugram, Noida, and Ghaziabad.
 
-First, run the development server:
+---
 
+## 🚀 Tech Stack
+
+- **Framework:** [Next.js 16](https://nextjs.org/) (App Router & Turbopack)
+- **Library:** [React 19](https://react.dev/)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+
+---
+
+## ✨ Features
+
+- **High-Converting Sections:** Hero, Services Catalog, Specialized Anti-Termite Treatment, On-Site Real Work & PPE Safety Gallery, Why Choose Us, Service Areas, and Contact CTA.
+- **Direct Lead Generation:** Instant Click-to-Call (`9599752537`) and WhatsApp chat (`9999651595`).
+- **Real On-Site Photography:** Real post-construction and anti-termite technician photos with PPE safety standards.
+- **SEO & Performance:** Optimized metadata, SVG brand favicon, and fast static page generation.
+
+---
+
+## 🛠️ Getting Started
+
+### 1. Install Dependencies
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Run Development Server
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Build for Production
+```bash
+npm run build
+npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 📁 Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```text
+project/
+├── app/
+│   ├── components/
+│   │   ├── Header.tsx              # Sticky header with mobile menu & active scroll spy
+│   │   ├── Hero.tsx                # Hero banner with real technician visual
+│   │   ├── Services.tsx            # Grid of 8 core pest control services
+│   │   ├── TermiteTreatment.tsx    # Dedicated anti-termite & deemak treatment
+│   │   ├── OnSiteAndSafety.tsx     # Post-construction work & PPE safety protocol
+│   │   ├── WhyChooseUs.tsx         # Trust badges & key benefits
+│   │   ├── ServiceAreasContact.tsx # Delhi NCR coverage & direct contacts
+│   │   └── BottomCTA.tsx           # High-visibility call banner
+│   ├── layout.tsx                  # Root layout, favicon & metadata
+│   ├── page.tsx                    # Landing page composition
+│   └── globals.css                 # Tailwind styles
+└── public/
+    ├── favicon.svg                 # Brand icon for browser tab
+    └── images/                     # Semantic on-site & treatment images
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
