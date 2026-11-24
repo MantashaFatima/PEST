@@ -1,9 +1,18 @@
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 
+// Same font pairing as Hero, Services, Termite & On-Site: headings = Plus Jakarta Sans, body = Inter
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["600", "700", "800"],
   display: "swap",
+  variable: "--font-heading",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-body",
 });
 
 const IMAGE_SRC = "/images/pest-control-technician-service.jpeg";
@@ -41,7 +50,7 @@ export default function WhyChooseUs() {
   return (
     <section
       id="why-us"
-      className={`${jakarta.className} relative isolate overflow-hidden bg-gradient-to-br from-[#EAF4FF] via-[#F3F9FF] to-[#E3F0FE] py-14 sm:py-20 lg:py-24`}
+      className={`${jakarta.variable} ${inter.variable} relative isolate overflow-hidden bg-gradient-to-br from-[#EAF4FF] via-[#F3F9FF] to-[#E3F0FE] py-14 font-[family-name:var(--font-body)] sm:py-20 lg:py-24`}
     >
       <div className="pointer-events-none absolute -left-28 top-10 -z-10 h-[360px] w-[360px] rounded-full bg-[#0752A0]/10 blur-3xl" />
       <div className="pointer-events-none absolute -right-28 bottom-0 -z-10 h-[360px] w-[360px] rounded-full bg-[#159B45]/10 blur-3xl" />
@@ -60,20 +69,20 @@ export default function WhyChooseUs() {
       <div className="mx-auto grid max-w-[1440px] grid-cols-1 items-center gap-10 px-4 sm:gap-12 sm:px-8 lg:grid-cols-2 lg:gap-12 lg:px-10 xl:gap-20 xl:px-16">
         {/* LEFT CONTENT */}
         <div className="relative z-10">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#0752A0]/15 bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-[#0752A0] shadow-sm sm:text-xs">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#0752A0]/15 bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-[#0752A0] shadow-[0_4px_14px_-6px_rgba(7,82,160,0.25)] sm:text-xs">
             <span className="h-1.5 w-1.5 rounded-full bg-[#159B45]" />
             Our Promise
           </div>
 
-          <h2 className="text-[30px] font-extrabold leading-[1.12] tracking-[-0.03em] text-[#0B2545] min-[400px]:text-[34px] sm:text-4xl lg:text-[40px] xl:text-[46px]">
+          <h2 className="font-[family-name:var(--font-heading)] text-[30px] font-extrabold leading-[1.12] tracking-[-0.03em] text-[#0A1F3D] min-[400px]:text-[34px] sm:text-4xl lg:text-[40px] xl:text-[46px]">
             Why Choose
-            <span className="mt-1 block bg-gradient-to-r from-[#0752A0] to-[#0A7BC8] bg-clip-text text-transparent">
+            <span className="mt-1 block bg-gradient-to-r from-[#073F82] via-[#0752A0] to-[#0A7BC8] bg-clip-text text-transparent">
               Balaji Pest Control?
             </span>
           </h2>
 
           <div className="mt-5 flex items-center gap-1.5" aria-hidden="true">
-            <span className="h-1 w-12 rounded-full bg-[#159B45]" />
+            <span className="h-1 w-12 rounded-full bg-gradient-to-r from-[#159B45] to-[#1DB255]" />
             <span className="h-1 w-3 rounded-full bg-[#0752A0]/40" />
           </div>
 
@@ -81,9 +90,9 @@ export default function WhyChooseUs() {
             {benefits.map((benefit) => (
               <li
                 key={benefit}
-                className="flex items-start gap-3 rounded-xl border border-white/80 bg-white/70 px-4 py-3 text-sm font-semibold leading-snug text-[#10294A] shadow-[0_4px_14px_-8px_rgba(7,82,160,0.2)] backdrop-blur transition-all duration-300 hover:translate-x-1 hover:bg-white sm:text-[15px]"
+                className="flex items-start gap-3 rounded-xl border border-white/80 bg-white/70 px-4 py-3 text-sm font-semibold leading-snug text-[#1E3A5F] shadow-[0_4px_14px_-8px_rgba(7,82,160,0.22)] backdrop-blur transition-all duration-300 hover:translate-x-1 hover:border-[#159B45]/25 hover:bg-white sm:text-[15px]"
               >
-                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#159B45] text-white">
+                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#1DB255] to-[#159B45] text-white shadow-sm">
                   <CheckIcon />
                 </span>
                 {benefit}
@@ -100,11 +109,11 @@ export default function WhyChooseUs() {
               >
                 <span
                   aria-hidden="true"
-                  className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#E9F3FF] to-[#D3E7FC] text-[28px] transition-transform duration-300 group-hover:scale-110"
+                  className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#E9F3FF] to-[#D3E7FC] text-[28px] ring-1 ring-inset ring-[#0752A0]/10 transition-transform duration-300 group-hover:scale-110"
                 >
                   {feature.icon}
                 </span>
-                <p className="mt-3 text-[12.5px] font-bold leading-tight text-[#0B2545] sm:text-[13px]">
+                <p className="mt-3 font-[family-name:var(--font-heading)] text-[12.5px] font-bold leading-tight tracking-[-0.01em] text-[#0A1F3D] sm:text-[13px]">
                   {feature.title}
                   <br />
                   <span className="font-semibold text-[#159B45]">

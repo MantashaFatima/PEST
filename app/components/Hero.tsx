@@ -1,9 +1,18 @@
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 
+// Headings: geometric, confident. Body: neutral & highly readable.
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["600", "700", "800"],
   display: "swap",
+  variable: "--font-heading",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-body",
 });
 
 const IMAGE_SRC = "/images/post-construction-spraying.jpeg";
@@ -14,16 +23,15 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className={`${jakarta.className} relative isolate overflow-hidden bg-gradient-to-br from-[#EEF6FF] via-[#F8FBFF] to-[#E6F2FF]`}
+      className={`${jakarta.variable} ${inter.variable} relative isolate overflow-hidden bg-gradient-to-br from-[#F2F8FF] via-white to-[#EAF3FF] font-[family-name:var(--font-body)]`}
     >
       {/* Background decoration */}
       <div className="pointer-events-none absolute -right-24 -top-32 -z-10 h-[460px] w-[460px] rounded-full bg-[#0752A0]/10 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-40 -left-32 -z-10 h-[420px] w-[420px] rounded-full bg-[#159B45]/10 blur-3xl" />
       <div
-        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.35]"
+        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.3]"
         style={{
-          backgroundImage:
-            "radial-gradient(#0752A0 0.6px, transparent 0.6px)",
+          backgroundImage: "radial-gradient(#0752A0 0.6px, transparent 0.6px)",
           backgroundSize: "26px 26px",
           maskImage:
             "linear-gradient(to bottom, transparent, black 30%, transparent)",
@@ -36,8 +44,8 @@ export default function Hero() {
         {/* LEFT CONTENT */}
         <div className="relative z-10 order-2 lg:order-1">
           {/* Badge */}
-          <div className="mb-5 inline-flex max-w-full items-center gap-2.5 rounded-full border border-[#0752A0]/15 bg-white/80 py-1.5 pl-1.5 pr-4 shadow-sm backdrop-blur sm:mb-6">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#159B45] text-[13px] font-bold text-white">
+          <div className="mb-5 inline-flex max-w-full items-center gap-2.5 rounded-full border border-[#0752A0]/15 bg-white/90 py-1.5 pl-1.5 pr-4 shadow-[0_4px_14px_-6px_rgba(7,82,160,0.25)] backdrop-blur sm:mb-6">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#1DB255] to-[#0F7F36] text-[13px] font-bold text-white">
               ✓
             </span>
             <span className="text-[11.5px] font-semibold tracking-wide text-[#0A3D75] sm:text-[13px]">
@@ -46,26 +54,28 @@ export default function Hero() {
           </div>
 
           {/* Heading */}
-          <h1 className="max-w-[680px] text-[34px] font-extrabold leading-[1.1] tracking-[-0.03em] text-[#0B2545] min-[400px]:text-[38px] sm:text-5xl lg:text-[50px] xl:text-[60px]">
+          <h1 className="max-w-[680px] font-[family-name:var(--font-heading)] text-[34px] font-extrabold leading-[1.1] tracking-[-0.025em] text-[#0A1F3D] min-[400px]:text-[38px] sm:text-5xl lg:text-[50px] xl:text-[60px]">
             Welcome to
-            <span className="mt-1 block bg-gradient-to-r from-[#0752A0] to-[#0A7BC8] bg-clip-text text-transparent">
+            <span className="mt-1 block bg-gradient-to-r from-[#073F82] via-[#0752A0] to-[#0A7BC8] bg-clip-text text-transparent">
               Balaji Pest Control
             </span>
           </h1>
 
           {/* Accent line */}
           <div className="mt-5 flex items-center gap-1.5" aria-hidden="true">
-            <span className="h-1 w-12 rounded-full bg-[#159B45]" />
+            <span className="h-1 w-12 rounded-full bg-gradient-to-r from-[#159B45] to-[#1DB255]" />
             <span className="h-1 w-3 rounded-full bg-[#0752A0]/40" />
           </div>
 
           {/* Description */}
-          <div className="mt-5 max-w-[600px] space-y-4 text-[15px] leading-[1.75] text-[#3A4F6A] sm:text-base">
+          <div className="mt-5 max-w-[600px] space-y-4 text-[15px] leading-[1.8] text-[#475569] sm:text-base">
             <p>
               Balaji Pest Control is a trusted pest management service provider
-              offering professional and effective pest control solutions for
-              homes, offices, shops, restaurants, commercial spaces and
-              industries.
+              offering professional and effective pest control solutions for{" "}
+              <span className="font-semibold text-[#0A1F3D]">
+                homes, offices, shops, restaurants, commercial spaces
+              </span>{" "}
+              and industries.
             </p>
             <p>
               Our goal is to provide a clean, hygienic and pest-free
@@ -79,7 +89,7 @@ export default function Hero() {
             {audiences.map((item) => (
               <li
                 key={item}
-                className="inline-flex items-center gap-1.5 rounded-full border border-[#0752A0]/10 bg-white px-3 py-1.5 text-xs font-semibold text-[#0A3D75] shadow-sm sm:text-[13px]"
+                className="inline-flex items-center gap-1.5 rounded-full border border-[#0752A0]/10 bg-white px-3.5 py-1.5 text-xs font-semibold text-[#0A3D75] shadow-[0_2px_8px_-3px_rgba(7,82,160,0.2)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#159B45]/40 hover:shadow-md sm:text-[13px]"
               >
                 <span className="h-1.5 w-1.5 rounded-full bg-[#159B45]" />
                 {item}
@@ -91,7 +101,7 @@ export default function Hero() {
           <div className="mt-8 flex flex-col gap-3 min-[480px]:flex-row min-[480px]:items-center sm:gap-4">
             <a
               href="#services"
-              className="group inline-flex min-h-[52px] items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[#0756A7] to-[#063F7E] px-8 text-[15px] font-bold text-white shadow-[0_10px_24px_-6px_rgba(7,82,160,0.45)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_28px_-6px_rgba(7,82,160,0.55)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#0752A0]/30"
+              className="group inline-flex min-h-[52px] items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[#0756A7] to-[#063F7E] px-8 font-[family-name:var(--font-heading)] text-[15px] font-bold text-white shadow-[0_10px_24px_-6px_rgba(7,82,160,0.5)] ring-1 ring-inset ring-white/10 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_28px_-6px_rgba(7,82,160,0.6)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#0752A0]/30"
             >
               Our Services
               <span
@@ -104,7 +114,7 @@ export default function Hero() {
 
             <a
               href="#contact"
-              className="inline-flex min-h-[52px] items-center justify-center rounded-full border-[1.5px] border-[#0752A0] bg-white px-8 text-[15px] font-bold text-[#0752A0] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0752A0] hover:text-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#0752A0]/30"
+              className="inline-flex min-h-[52px] items-center justify-center rounded-full border-[1.5px] border-[#0752A0] bg-white px-8 font-[family-name:var(--font-heading)] text-[15px] font-bold text-[#0752A0] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0752A0] hover:text-white hover:shadow-[0_10px_24px_-8px_rgba(7,82,160,0.5)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#0752A0]/30"
             >
               Contact Us
             </a>
@@ -119,26 +129,18 @@ export default function Hero() {
             className="absolute -bottom-3 -right-3 h-full w-full rounded-[28px] border-2 border-[#0752A0]/20 bg-gradient-to-br from-[#0752A0]/10 to-[#159B45]/10 sm:-bottom-4 sm:-right-4 sm:rounded-[36px]"
           />
 
-          {/* Image card: whole image always visible (object-contain),
-              blurred copy fills any leftover space */}
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[28px] border-[6px] border-white bg-[#DCEBFA] shadow-[0_30px_60px_-20px_rgba(7,60,120,0.40)] sm:rounded-[36px] sm:border-8 lg:aspect-[5/4] xl:aspect-[4/3]">
-            {/* Blurred backdrop */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={IMAGE_SRC}
-              alt=""
-              aria-hidden="true"
-              className="absolute inset-0 h-full w-full scale-110 object-cover opacity-60 blur-2xl"
-            />
-            {/* Main image, never cropped */}
+          {/* Image card: photo fills the whole frame edge to edge (no side gaps) */}
+          <div className="relative aspect-[4/4.3] w-full overflow-hidden rounded-[28px] border-[6px] border-white bg-[#DCEBFA] shadow-[0_30px_60px_-20px_rgba(7,60,120,0.45)] sm:rounded-[36px] sm:border-8 lg:aspect-[1/1]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={IMAGE_SRC}
               alt="Professional Balaji Pest Control technician in PPE kit spraying walls"
-              className="relative h-full w-full object-contain"
+              className="absolute inset-0 h-full w-full object-cover object-[center_55%]"
               loading="eager"
               fetchPriority="high"
             />
+            {/* Soft bottom shade + inner ring for a premium finish */}
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#06223F]/25 to-transparent" />
             <div className="pointer-events-none absolute inset-0 rounded-[inherit] ring-1 ring-inset ring-black/5" />
           </div>
 
@@ -184,7 +186,7 @@ export default function Hero() {
                   strokeLinejoin="round"
                 />
               </svg>
-              <span className="text-[10px] font-extrabold leading-tight sm:text-[13px] xl:text-[15px]">
+              <span className="font-[family-name:var(--font-heading)] text-[10px] font-extrabold leading-tight sm:text-[13px] xl:text-[15px]">
                 Clean · Safe
                 <br />
                 Pest-Free

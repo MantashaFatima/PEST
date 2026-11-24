@@ -1,9 +1,18 @@
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 
+// Same font pairing as the rest of the site: headings = Plus Jakarta Sans, body = Inter
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["600", "700", "800"],
   display: "swap",
+  variable: "--font-heading",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-body",
 });
 
 const PHONE_NUMBER = "9599752537";
@@ -79,7 +88,7 @@ export default function ServiceAreasContact() {
   return (
     <section
       id="areas"
-      className={`${jakarta.className} relative isolate overflow-hidden bg-gradient-to-b from-white via-[#F5FAFF] to-white py-14 sm:py-20`}
+      className={`${jakarta.variable} ${inter.variable} relative isolate overflow-hidden bg-gradient-to-b from-white via-[#F5FAFF] to-white py-14 font-[family-name:var(--font-body)] sm:py-20`}
     >
       <div className="pointer-events-none absolute -right-28 top-0 -z-10 h-[340px] w-[340px] rounded-full bg-[#0752A0]/[0.07] blur-3xl" />
       <div className="pointer-events-none absolute -left-28 bottom-0 -z-10 h-[340px] w-[340px] rounded-full bg-[#159B45]/[0.07] blur-3xl" />
@@ -88,25 +97,25 @@ export default function ServiceAreasContact() {
         {/* SERVICE AREAS */}
         <div className="flex flex-col justify-center">
           <div className="text-center">
-            <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-[#0752A0]/15 bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-[#0752A0] shadow-sm sm:text-xs">
+            <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-[#0752A0]/15 bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-[#0752A0] shadow-[0_4px_14px_-6px_rgba(7,82,160,0.25)] sm:text-xs">
               <PinIcon className="h-3.5 w-3.5 text-[#159B45]" />
               Delhi NCR Coverage
             </div>
 
-            <h2 className="text-[26px] font-extrabold leading-tight tracking-[-0.025em] text-[#0B2545] sm:text-3xl lg:text-[36px]">
+            <h2 className="font-[family-name:var(--font-heading)] text-[26px] font-extrabold leading-tight tracking-[-0.03em] text-[#0A1F3D] sm:text-3xl lg:text-[36px]">
               Our{" "}
-              <span className="bg-gradient-to-r from-[#0752A0] to-[#0A7BC8] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#073F82] via-[#0752A0] to-[#0A7BC8] bg-clip-text text-transparent">
                 Service Areas
               </span>
             </h2>
 
             <div className="mx-auto mt-4 flex items-center justify-center gap-1.5" aria-hidden="true">
               <span className="h-1 w-3 rounded-full bg-[#0752A0]/40" />
-              <span className="h-1 w-12 rounded-full bg-[#159B45]" />
+              <span className="h-1 w-12 rounded-full bg-gradient-to-r from-[#159B45] to-[#1DB255]" />
               <span className="h-1 w-3 rounded-full bg-[#0752A0]/40" />
             </div>
 
-            <p className="mx-auto mt-4 max-w-[560px] text-[15px] leading-[1.7] text-[#3A4F6A] sm:text-base">
+            <p className="mx-auto mt-4 max-w-[560px] text-[15px] leading-[1.8] text-[#475569] sm:text-base">
               Delhi, Gurugram, Noida, Ghaziabad and surrounding Delhi NCR areas.
             </p>
           </div>
@@ -115,7 +124,7 @@ export default function ServiceAreasContact() {
             {areas.map((area) => (
               <li
                 key={area.name}
-                className="group relative aspect-[4/5] overflow-hidden rounded-2xl border-[3px] border-white bg-[#DCEBFA] shadow-[0_10px_30px_-12px_rgba(7,82,160,0.35)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_36px_-12px_rgba(7,82,160,0.45)] sm:aspect-[3/4] lg:aspect-[4/5] xl:aspect-[3/4]"
+                className="group relative aspect-[4/5] overflow-hidden rounded-2xl border-[3px] border-white bg-[#DCEBFA] shadow-[0_10px_30px_-12px_rgba(7,82,160,0.35)] ring-1 ring-[#0752A0]/10 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_36px_-12px_rgba(7,82,160,0.45)] sm:aspect-[3/4] lg:aspect-[4/5] xl:aspect-[3/4]"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -124,11 +133,11 @@ export default function ServiceAreasContact() {
                   loading="lazy"
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#041F43]/90 via-[#041F43]/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#041F43]/90 via-[#041F43]/25 to-transparent" />
 
                 <div className="absolute inset-x-0 bottom-0 flex items-center justify-center gap-1.5 p-3 text-white sm:p-4">
                   <PinIcon className="h-4 w-4 shrink-0 text-[#4ADE80]" />
-                  <h3 className="text-sm font-bold tracking-wide sm:text-[15px]">
+                  <h3 className="font-[family-name:var(--font-heading)] text-sm font-bold tracking-[0.01em] sm:text-[15px]">
                     {area.name}
                   </h3>
                 </div>
@@ -140,35 +149,38 @@ export default function ServiceAreasContact() {
         {/* CONTACT US */}
         <div
           id="contact"
-          className="relative flex flex-col justify-center overflow-hidden rounded-3xl bg-gradient-to-br from-[#0A4F9C] via-[#07407F] to-[#052E5E] p-6 text-white shadow-[0_24px_50px_-18px_rgba(5,46,94,0.6)] sm:p-8"
+          className="relative flex flex-col justify-center overflow-hidden rounded-3xl bg-gradient-to-br from-[#0A4F9C] via-[#07407F] to-[#052E5E] p-6 text-white shadow-[0_24px_50px_-18px_rgba(5,46,94,0.6)] ring-1 ring-inset ring-white/10 sm:p-8"
         >
           <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-white/10 blur-2xl" />
-          <div className="pointer-events-none absolute -bottom-20 -left-10 h-48 w-48 rounded-full bg-[#159B45]/25 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-20 -left-10 h-48 w-48 rounded-full bg-[#159B45]/30 blur-3xl" />
 
           <div className="relative text-center">
-            <h2 className="text-2xl font-extrabold tracking-[-0.02em] sm:text-[28px]">
+            <h2 className="font-[family-name:var(--font-heading)] text-2xl font-extrabold tracking-[-0.02em] sm:text-[28px]">
               Contact Us
             </h2>
-            <p className="mt-1.5 text-sm font-bold tracking-[0.14em] text-[#8FD3FF] sm:text-base">
+            <p className="mt-1.5 font-[family-name:var(--font-heading)] text-sm font-bold tracking-[0.14em] text-[#9FD8FF] sm:text-base">
               BALAJI PEST CONTROL
             </p>
-            <div className="mx-auto mt-4 h-1 w-12 rounded-full bg-[#4ADE80]" aria-hidden="true" />
+            <div
+              className="mx-auto mt-4 h-1 w-12 rounded-full bg-gradient-to-r from-[#1DB255] to-[#4ADE80]"
+              aria-hidden="true"
+            />
           </div>
 
           <div className="relative mt-6 space-y-3">
             {/* Phone */}
             <a
               href={PHONE_HREF}
-              className="group flex items-center gap-3.5 rounded-2xl border border-white/15 bg-white/10 p-3.5 backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/15 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30"
+              className="group flex items-center gap-3.5 rounded-2xl border border-white/15 bg-white/10 p-3.5 backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-white/25 hover:bg-white/15 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30"
             >
               <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-[#0752A0] shadow-md">
                 <PhoneIcon />
               </span>
               <span className="min-w-0">
-                <span className="block text-xs font-medium text-[#BFDFFF] sm:text-[13px]">
+                <span className="block text-xs font-medium text-[#C7E2FF] sm:text-[13px]">
                   Contact Number:
                 </span>
-                <span className="block text-[22px] font-extrabold leading-tight tracking-tight sm:text-2xl">
+                <span className="block font-[family-name:var(--font-heading)] text-[22px] font-extrabold leading-tight tracking-tight sm:text-2xl">
                   {PHONE_NUMBER}
                 </span>
               </span>
@@ -179,16 +191,16 @@ export default function ServiceAreasContact() {
               href={WHATSAPP_HREF}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-3.5 rounded-2xl border border-white/15 bg-white/10 p-3.5 backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/15 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30"
+              className="group flex items-center gap-3.5 rounded-2xl border border-white/15 bg-white/10 p-3.5 backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-white/25 hover:bg-white/15 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30"
             >
               <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white shadow-md">
                 <ChatIcon />
               </span>
               <span className="min-w-0">
-                <span className="block text-xs font-medium text-[#BFDFFF] sm:text-[13px]">
+                <span className="block text-xs font-medium text-[#C7E2FF] sm:text-[13px]">
                   WhatsApp Number:
                 </span>
-                <span className="block text-[22px] font-extrabold leading-tight tracking-tight sm:text-2xl">
+                <span className="block font-[family-name:var(--font-heading)] text-[22px] font-extrabold leading-tight tracking-tight sm:text-2xl">
                   {WHATSAPP_NUMBER}
                 </span>
               </span>
@@ -200,7 +212,7 @@ export default function ServiceAreasContact() {
             href={WHATSAPP_HREF}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative mt-6 inline-flex min-h-[52px] w-full items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#1FBF5B] to-[#0F9A44] px-6 text-sm font-bold text-white shadow-[0_12px_26px_-8px_rgba(21,155,69,0.7)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_30px_-8px_rgba(21,155,69,0.8)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/40"
+            className="group relative mt-6 inline-flex min-h-[52px] w-full items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#1FBF5B] to-[#0F9A44] px-6 font-[family-name:var(--font-heading)] text-sm font-extrabold text-white shadow-[0_12px_26px_-8px_rgba(21,155,69,0.7)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_30px_-8px_rgba(21,155,69,0.8)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/40"
           >
             <ChatIcon className="h-5 w-5" />
             Chat on WhatsApp

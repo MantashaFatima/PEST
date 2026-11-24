@@ -1,9 +1,18 @@
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 
+// Same font pairing as Hero, Services & Termite: headings = Plus Jakarta Sans, body = Inter
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["600", "700", "800"],
   display: "swap",
+  variable: "--font-heading",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-body",
 });
 
 const PHONE_HREF = "tel:+919599752537";
@@ -107,7 +116,7 @@ interface ImageCardProps {
 function ImageCard({ src, alt, title, subtitle, accent = "blue" }: ImageCardProps) {
   const dot = accent === "green" ? "bg-[#159B45]" : "bg-[#0752A0]";
   return (
-    <figure className="group overflow-hidden rounded-2xl border border-[#D7E8FA] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_-12px_rgba(7,82,160,0.28)]">
+    <figure className="group overflow-hidden rounded-2xl border border-[#D7E8FA] bg-white shadow-[0_6px_20px_-10px_rgba(7,82,160,0.2)] transition-all duration-300 hover:-translate-y-1 hover:border-[#0752A0]/30 hover:shadow-[0_18px_36px_-14px_rgba(7,82,160,0.35)]">
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#E3EFFB]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -125,13 +134,13 @@ function ImageCard({ src, alt, title, subtitle, accent = "blue" }: ImageCardProp
           className="relative h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.03]"
         />
       </div>
-      <figcaption className="flex items-start gap-2.5 border-t border-[#E3EEFA] px-4 py-3">
+      <figcaption className="flex items-start gap-2.5 border-t border-[#E3EEFA] px-4 py-3.5">
         <span className={`mt-1.5 h-2 w-2 shrink-0 rounded-full ${dot}`} />
         <span>
-          <span className="block text-[13px] font-bold leading-snug text-[#0B2545] sm:text-sm">
+          <span className="block font-[family-name:var(--font-heading)] text-[13px] font-bold leading-snug tracking-[-0.01em] text-[#0A1F3D] sm:text-sm">
             {title}
           </span>
-          <span className="mt-0.5 block text-xs leading-snug text-[#5A6F8A]">
+          <span className="mt-0.5 block text-xs leading-snug text-[#64748B]">
             {subtitle}
           </span>
         </span>
@@ -144,7 +153,7 @@ export default function OnSiteAndSafety() {
   return (
     <section
       id="work-safety"
-      className={`${jakarta.className} relative isolate overflow-hidden bg-gradient-to-b from-[#F8FBFF] via-[#F2F8FF] to-[#F8FBFF] py-14 sm:py-20 lg:py-24`}
+      className={`${jakarta.variable} ${inter.variable} relative isolate overflow-hidden bg-gradient-to-b from-[#F8FBFF] via-[#F2F8FF] to-[#F8FBFF] py-14 font-[family-name:var(--font-body)] sm:py-20 lg:py-24`}
     >
       {/* Decoration */}
       <div className="pointer-events-none absolute -left-32 top-10 -z-10 h-[360px] w-[360px] rounded-full bg-[#0752A0]/[0.07] blur-3xl" />
@@ -153,25 +162,25 @@ export default function OnSiteAndSafety() {
       <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-10 xl:px-16">
         {/* Section Header */}
         <div className="mx-auto max-w-[820px] text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#0752A0]/15 bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-[#0752A0] shadow-sm sm:text-xs">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#0752A0]/15 bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-[#0752A0] shadow-[0_4px_14px_-6px_rgba(7,82,160,0.25)] sm:text-xs">
             <ShieldIcon className="h-4 w-4 text-[#159B45]" />
             Verified Quality &amp; Safety
           </div>
 
-          <h2 className="text-[28px] font-extrabold leading-[1.15] tracking-[-0.025em] text-[#0B2545] min-[400px]:text-[32px] sm:text-4xl lg:text-[42px]">
+          <h2 className="font-[family-name:var(--font-heading)] text-[28px] font-extrabold leading-[1.15] tracking-[-0.03em] text-[#0A1F3D] min-[400px]:text-[32px] sm:text-4xl lg:text-[44px]">
             Real On-Site Work &amp;{" "}
-            <span className="bg-gradient-to-r from-[#0752A0] to-[#0A7BC8] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#073F82] via-[#0752A0] to-[#0A7BC8] bg-clip-text text-transparent">
               PPE Safety Standards
             </span>
           </h2>
 
           <div className="mx-auto mt-4 flex items-center justify-center gap-1.5" aria-hidden="true">
             <span className="h-1 w-3 rounded-full bg-[#0752A0]/40" />
-            <span className="h-1 w-12 rounded-full bg-[#159B45]" />
+            <span className="h-1 w-12 rounded-full bg-gradient-to-r from-[#159B45] to-[#1DB255]" />
             <span className="h-1 w-3 rounded-full bg-[#0752A0]/40" />
           </div>
 
-          <p className="mt-5 text-[15px] leading-[1.75] text-[#3A4F6A] sm:text-base">
+          <p className="mx-auto mt-5 max-w-[720px] text-[15px] leading-[1.8] text-[#475569] sm:text-base">
             We don&apos;t just promise quality — we deliver it with fully equipped,
             verified pest control technicians wearing medical-grade PPE kits and
             using government-approved chemicals for residential and
@@ -182,22 +191,22 @@ export default function OnSiteAndSafety() {
         {/* 2-Column Split */}
         <div className="mt-10 grid grid-cols-1 items-stretch gap-6 sm:mt-14 sm:gap-8 lg:grid-cols-2 lg:gap-8 xl:gap-10">
           {/* LEFT: On-Site Work */}
-          <article className="flex flex-col rounded-3xl border border-[#D7E8FA] bg-white p-5 shadow-[0_10px_40px_-16px_rgba(7,82,160,0.18)] sm:p-8">
+          <article className="flex flex-col rounded-3xl border border-[#D7E8FA] bg-white p-5 shadow-[0_10px_36px_-16px_rgba(7,82,160,0.22)] sm:p-8">
             <header className="flex items-start justify-between gap-4 border-b border-[#E3EEFA] pb-5">
               <div>
-                <span className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#0752A0] sm:text-xs">
+                <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0752A0] sm:text-xs">
                   On-Site Execution
                 </span>
-                <h3 className="mt-1.5 text-xl font-extrabold leading-tight tracking-[-0.015em] text-[#0B2545] sm:text-2xl">
+                <h3 className="mt-1.5 font-[family-name:var(--font-heading)] text-xl font-extrabold leading-tight tracking-[-0.02em] text-[#0A1F3D] sm:text-2xl">
                   Post-Construction &amp; Commercial Treatments
                 </h3>
               </div>
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#E4F0FF] to-[#CFE4FB] text-[#0752A0]">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#E4F0FF] to-[#CFE4FB] text-[#0752A0] ring-1 ring-inset ring-[#0752A0]/10">
                 <BuildingIcon />
               </span>
             </header>
 
-            <p className="mt-5 text-sm leading-[1.75] text-[#3A4F6A] sm:text-[15px]">
+            <p className="mt-5 text-sm leading-[1.75] text-[#475569] sm:text-[15px]">
               Before moving into newly built or renovated homes, offices, or
               apartments, our team carries out thorough deep-treatment across
               wall corners, electrical conduits, door jambs, and drainage ducts
@@ -223,9 +232,9 @@ export default function OnSiteAndSafety() {
               {executionPoints.map((point) => (
                 <li
                   key={point}
-                  className="flex items-start gap-3 text-[13px] font-semibold leading-snug text-[#1B365D] sm:text-sm"
+                  className="flex items-start gap-3 text-[13px] font-semibold leading-snug text-[#1E3A5F] sm:text-sm"
                 >
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#159B45] text-white">
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#1DB255] to-[#159B45] text-white shadow-sm">
                     <CheckIcon />
                   </span>
                   {point}
@@ -236,7 +245,7 @@ export default function OnSiteAndSafety() {
             <div className="mt-auto border-t border-[#E3EEFA] pt-6">
               <a
                 href="#contact"
-                className="group inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#0756A7] to-[#063F7E] px-7 text-sm font-bold text-white shadow-[0_10px_24px_-8px_rgba(7,82,160,0.5)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_28px_-8px_rgba(7,82,160,0.6)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#0752A0]/30 sm:w-auto"
+                className="group inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#0756A7] to-[#053D78] px-7 font-[family-name:var(--font-heading)] text-sm font-bold text-white shadow-[0_10px_24px_-8px_rgba(7,82,160,0.5)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_28px_-8px_rgba(7,82,160,0.6)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#0752A0]/30 sm:w-auto"
               >
                 Book Post-Construction Service
                 <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">
@@ -247,22 +256,22 @@ export default function OnSiteAndSafety() {
           </article>
 
           {/* RIGHT: Safety */}
-          <article className="flex flex-col rounded-3xl border border-[#D7E8FA] bg-white p-5 shadow-[0_10px_40px_-16px_rgba(7,82,160,0.18)] sm:p-8">
+          <article className="flex flex-col rounded-3xl border border-[#D7E8FA] bg-white p-5 shadow-[0_10px_36px_-16px_rgba(7,82,160,0.22)] sm:p-8">
             <header className="flex items-start justify-between gap-4 border-b border-[#E3EEFA] pb-5">
               <div>
-                <span className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#159B45] sm:text-xs">
+                <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#159B45] sm:text-xs">
                   Safety Protocol
                 </span>
-                <h3 className="mt-1.5 text-xl font-extrabold leading-tight tracking-[-0.015em] text-[#0B2545] sm:text-2xl">
+                <h3 className="mt-1.5 font-[family-name:var(--font-heading)] text-xl font-extrabold leading-tight tracking-[-0.02em] text-[#0A1F3D] sm:text-2xl">
                   Complete PPE Kit &amp; Safe Procedures
                 </h3>
               </div>
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#E3F8EA] to-[#C9EFD6] text-[#159B45]">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#E3F8EA] to-[#C9EFD6] text-[#159B45] ring-1 ring-inset ring-[#159B45]/15">
                 <SuitIcon />
               </span>
             </header>
 
-            <p className="mt-5 text-sm leading-[1.75] text-[#3A4F6A] sm:text-[15px]">
+            <p className="mt-5 text-sm leading-[1.75] text-[#475569] sm:text-[15px]">
               Your family&apos;s health and safety is our foremost concern. Every
               technician follows strict safety protocols, equipped with masks,
               gloves, safety goggles, suits, and safety shoes.
@@ -289,11 +298,11 @@ export default function OnSiteAndSafety() {
               {safetyBadges.map((item) => (
                 <li
                   key={item.title}
-                  className="flex items-center gap-2.5 rounded-xl border border-[#E1EEFB] bg-[#F4F9FF] px-3 py-2.5 text-xs font-bold leading-tight text-[#0A3D75] transition-colors hover:border-[#159B45]/30 hover:bg-[#EEF9F2]"
+                  className="flex items-center gap-2.5 rounded-xl border border-[#D7E8FA] bg-[#F4F9FF] px-3 py-2.5 text-xs font-bold leading-tight text-[#0A3D75] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#159B45]/40 hover:bg-[#EEF9F2] hover:text-[#0A1F3D]"
                 >
                   <span
                     aria-hidden="true"
-                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white text-base shadow-sm"
+                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white text-base shadow-sm ring-1 ring-black/5"
                   >
                     {item.icon}
                   </span>
@@ -305,7 +314,7 @@ export default function OnSiteAndSafety() {
             <div className="mt-auto border-t border-[#E3EEFA] pt-6">
               <a
                 href={PHONE_HREF}
-                className="inline-flex min-h-[48px] w-full items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#17A94C] to-[#0F8A38] px-7 text-sm font-bold text-white shadow-[0_10px_24px_-8px_rgba(21,155,69,0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_28px_-8px_rgba(21,155,69,0.65)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#159B45]/30 sm:w-auto"
+                className="inline-flex min-h-[48px] w-full items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#1DB255] to-[#0F9A44] px-7 font-[family-name:var(--font-heading)] text-sm font-bold text-white shadow-[0_10px_24px_-8px_rgba(21,155,69,0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_28px_-8px_rgba(21,155,69,0.7)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#159B45]/30 sm:w-auto"
               >
                 <PhoneIcon />
                 Speak With Our Safety Expert

@@ -6,6 +6,7 @@ import OnSiteAndSafety from "./components/OnSiteAndSafety";
 import WhyChooseUs from "./components/WhyChooseUs";
 import ServiceAreasContact from "./components/ServiceAreasContact";
 import BottomCTA from "./components/BottomCTA";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         <WhyChooseUs />
         <ServiceAreasContact />
         <BottomCTA />
+        <Footer />
       </main>
     </>
   );

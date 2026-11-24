@@ -1,9 +1,18 @@
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 
+// Same font pairing as Hero & Services: headings = Plus Jakarta Sans, body = Inter
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["600", "700", "800"],
   display: "swap",
+  variable: "--font-heading",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-body",
 });
 
 const PHONE_NUMBER = "9599752537";
@@ -50,7 +59,7 @@ const termiteFeatures = [
     title: "Essential Property Protection",
     subtitle: "Protect Your Expensive Interiors",
     desc: "Protecting your health, wooden furniture, wardrobes, and walls from hidden pest intrusions with long-lasting warranty protection.",
-    image: "/images/termite-control-essential.jpeg",
+    image: "/images/termite-infestation-close-up.jpeg",
     tag: "Long-Term Warranty",
   },
 ];
@@ -86,36 +95,53 @@ export default function TermiteTreatment() {
   return (
     <section
       id="termite-treatment"
-      className={`${jakarta.className} relative isolate overflow-hidden bg-gradient-to-b from-[#F5FAFF] via-white to-[#F0F7FF] py-14 sm:py-20 lg:py-24`}
+      className={`${jakarta.variable} ${inter.variable} relative isolate overflow-hidden bg-gradient-to-b from-[#F2F8FF] via-white to-[#EEF6FF] py-14 font-[family-name:var(--font-body)] sm:py-20 lg:py-24`}
     >
       <div className="pointer-events-none absolute -right-28 top-20 -z-10 h-[360px] w-[360px] rounded-full bg-[#0752A0]/[0.07] blur-3xl" />
       <div className="pointer-events-none absolute -left-28 bottom-40 -z-10 h-[360px] w-[360px] rounded-full bg-[#159B45]/[0.07] blur-3xl" />
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.2]"
+        style={{
+          backgroundImage: "radial-gradient(#0752A0 0.6px, transparent 0.6px)",
+          backgroundSize: "28px 28px",
+          maskImage:
+            "linear-gradient(to bottom, black, transparent 35%, transparent 65%, black)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, black, transparent 35%, transparent 65%, black)",
+        }}
+      />
 
       <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-10 xl:px-16">
         {/* Section Header */}
-        <div className="mx-auto max-w-[800px] text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#0752A0]/15 bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-[#0752A0] shadow-sm sm:text-xs">
+        <div className="mx-auto max-w-[820px] text-center">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#0752A0]/15 bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-[#0752A0] shadow-[0_4px_14px_-6px_rgba(7,82,160,0.25)] sm:text-xs">
             <span aria-hidden="true">🐜</span> Specialized Termite Management
           </div>
 
-          <h2 className="text-[28px] font-extrabold leading-[1.15] tracking-[-0.025em] text-[#0B2545] min-[400px]:text-[32px] sm:text-4xl lg:text-[42px]">
-            Complete Anti-Termite &amp;{" "}
-            <span className="bg-gradient-to-r from-[#0752A0] to-[#0A7BC8] bg-clip-text text-transparent">
+          <h2 className="font-[family-name:var(--font-heading)] text-[28px] font-extrabold leading-[1.15] tracking-[-0.03em] text-[#0A1F3D] min-[400px]:text-[32px] sm:text-4xl lg:text-[44px]">
+            Complete Anti-Termite &amp;
+            <span className="mt-1 block bg-gradient-to-r from-[#073F82] via-[#0752A0] to-[#0A7BC8] bg-clip-text text-transparent">
               Deemak Treatment
             </span>
           </h2>
 
-          <div className="mx-auto mt-4 flex items-center justify-center gap-1.5" aria-hidden="true">
+          <div
+            className="mx-auto mt-4 flex items-center justify-center gap-1.5"
+            aria-hidden="true"
+          >
             <span className="h-1 w-3 rounded-full bg-[#0752A0]/40" />
-            <span className="h-1 w-12 rounded-full bg-[#159B45]" />
+            <span className="h-1 w-12 rounded-full bg-gradient-to-r from-[#159B45] to-[#1DB255]" />
             <span className="h-1 w-3 rounded-full bg-[#0752A0]/40" />
           </div>
 
-          <p className="mt-5 text-[15px] leading-[1.75] text-[#3A4F6A] sm:text-base">
+          <p className="mx-auto mt-5 max-w-[720px] text-[15px] leading-[1.8] text-[#475569] sm:text-base">
             Termites silently damage costly wooden furniture, cabinets, doors,
-            and building foundations. Balaji Pest Control provides certified,
-            drill-fill-seal and pipe-barrier anti-termite treatments across
-            Delhi, Noida, Gurugram &amp; Ghaziabad.
+            and building foundations. Balaji Pest Control provides{" "}
+            <span className="font-semibold text-[#0A1F3D]">
+              certified, drill-fill-seal and pipe-barrier anti-termite
+              treatments
+            </span>{" "}
+            across Delhi, Noida, Gurugram &amp; Ghaziabad.
           </p>
         </div>
 
@@ -124,40 +150,36 @@ export default function TermiteTreatment() {
           {termiteFeatures.map((item) => (
             <li key={item.title} className="flex">
               <article className="group flex w-full flex-col overflow-hidden rounded-3xl border border-[#D7E8FA] bg-white shadow-[0_10px_36px_-16px_rgba(7,82,160,0.22)] transition-all duration-300 hover:-translate-y-1.5 hover:border-[#0752A0]/30 hover:shadow-[0_24px_48px_-18px_rgba(7,82,160,0.38)]">
-                {/* Image: always fully visible */}
+                {/* Image: fills the full card width, no side gaps */}
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#E3EFFB]">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={item.image}
-                    alt=""
-                    aria-hidden="true"
-                    loading="lazy"
-                    className="absolute inset-0 h-full w-full scale-110 object-cover opacity-60 blur-xl"
-                  />
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={item.image}
                     alt={item.title}
                     loading="lazy"
-                    className="relative h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.03]"
+                    className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.05]"
                   />
+                  {/* soft shade so the tag stays readable */}
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#06223F]/25 via-transparent to-[#06223F]/10" />
 
-                  <span className="absolute left-3.5 top-3.5 inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1 text-[11px] font-bold text-[#0752A0] shadow-md backdrop-blur">
+                  <span className="absolute left-3.5 top-3.5 inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1 text-[11px] font-bold text-[#0752A0] shadow-md ring-1 ring-black/5 backdrop-blur">
                     <span className="h-1.5 w-1.5 rounded-full bg-[#159B45]" />
                     {item.tag}
                   </span>
                 </div>
 
+
+
                 {/* Body */}
                 <div className="flex flex-1 flex-col p-5 sm:p-6">
-                  <h3 className="text-lg font-extrabold leading-snug tracking-[-0.01em] text-[#0B2545] sm:text-xl">
+                  <h3 className="font-[family-name:var(--font-heading)] text-lg font-extrabold leading-snug tracking-[-0.015em] text-[#0A1F3D] transition-colors group-hover:text-[#0752A0] sm:text-xl">
                     {item.title}
                   </h3>
                   <p className="mt-1 text-[13px] font-semibold text-[#159B45]">
                     {item.subtitle}
                   </p>
 
-                  <p className="mt-3 text-sm leading-[1.7] text-[#3A4F6A]">
+                  <p className="mt-3 text-sm leading-[1.75] text-[#475569]">
                     {item.desc}
                   </p>
 
@@ -165,12 +187,12 @@ export default function TermiteTreatment() {
                     <div className="border-t border-[#E3EEFA] pt-4">
                       <a
                         href="#contact"
-                        className="inline-flex min-h-[40px] items-center gap-2 text-[13px] font-bold text-[#0752A0] transition-colors hover:text-[#053D78] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#0752A0]/25"
+                        className="inline-flex min-h-[40px] items-center gap-2 font-[family-name:var(--font-heading)] text-[13px] font-bold text-[#0752A0] transition-colors hover:text-[#053D78] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#0752A0]/25"
                       >
                         Book Free Inspection
                         <span
                           aria-hidden="true"
-                          className="transition-transform duration-300 group-hover:translate-x-1"
+                          className="text-[#159B45] transition-transform duration-300 group-hover:translate-x-1"
                         >
                           →
                         </span>
@@ -184,17 +206,17 @@ export default function TermiteTreatment() {
         </ul>
 
         {/* Callout Banner */}
-        <div className="relative mt-10 overflow-hidden rounded-3xl bg-gradient-to-br from-[#0A4F9C] via-[#07407F] to-[#052E5E] p-6 text-white shadow-[0_24px_50px_-18px_rgba(5,46,94,0.6)] sm:mt-14 sm:p-9 lg:p-10">
+        <div className="relative mt-10 overflow-hidden rounded-3xl bg-gradient-to-br from-[#0A4F9C] via-[#07407F] to-[#052E5E] p-6 text-white shadow-[0_24px_50px_-18px_rgba(5,46,94,0.6)] ring-1 ring-inset ring-white/10 sm:mt-14 sm:p-9 lg:p-10">
           <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full border border-white/10" />
           <div className="pointer-events-none absolute -right-6 -top-6 h-36 w-36 rounded-full border border-white/10" />
-          <div className="pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-[#159B45]/25 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-[#159B45]/30 blur-3xl" />
 
           <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
             <div className="max-w-[720px]">
-              <h3 className="text-[22px] font-extrabold leading-tight tracking-[-0.02em] sm:text-2xl lg:text-[28px]">
+              <h3 className="font-[family-name:var(--font-heading)] text-[22px] font-extrabold leading-tight tracking-[-0.02em] sm:text-2xl lg:text-[28px]">
                 Suspecting Termites in your Wooden Wardrobes or Walls?
               </h3>
-              <p className="mt-2.5 text-sm leading-relaxed text-[#CFE6FF] sm:text-[15px]">
+              <p className="mt-2.5 text-sm leading-relaxed text-[#D6E9FF] sm:text-[15px]">
                 Don&apos;t wait until wood hollows out. Get instant doorstep
                 inspection and certified warranty solutions.
               </p>
@@ -203,7 +225,7 @@ export default function TermiteTreatment() {
             <div className="flex w-full shrink-0 flex-col gap-3 min-[480px]:flex-row lg:w-auto">
               <a
                 href={PHONE_HREF}
-                className="inline-flex min-h-[52px] flex-1 items-center justify-center gap-2.5 rounded-full bg-white px-7 text-sm font-extrabold text-[#0752A0] shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#EAF4FF] hover:shadow-xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/40 lg:flex-none"
+                className="inline-flex min-h-[52px] flex-1 items-center justify-center gap-2.5 rounded-full bg-white px-7 font-[family-name:var(--font-heading)] text-sm font-extrabold text-[#0752A0] shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#EAF4FF] hover:shadow-xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/40 lg:flex-none"
               >
                 <PhoneIcon />
                 Call: {PHONE_NUMBER}
@@ -212,7 +234,7 @@ export default function TermiteTreatment() {
                 href={WHATSAPP_HREF}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-[52px] flex-1 items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#1FBF5B] to-[#0F9A44] px-7 text-sm font-extrabold text-white shadow-[0_12px_26px_-8px_rgba(21,155,69,0.7)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_30px_-8px_rgba(21,155,69,0.8)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/40 lg:flex-none"
+                className="inline-flex min-h-[52px] flex-1 items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#1FBF5B] to-[#0F9A44] px-7 font-[family-name:var(--font-heading)] text-sm font-extrabold text-white shadow-[0_12px_26px_-8px_rgba(21,155,69,0.7)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_30px_-8px_rgba(21,155,69,0.8)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/40 lg:flex-none"
               >
                 <ChatIcon className="h-5 w-5" />
                 WhatsApp Us

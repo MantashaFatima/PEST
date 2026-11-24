@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 
 const PHONE_DISPLAY = "95997 52537";
 const PHONE_HREF = "tel:+919599752537";
+// File lives at public/images/logo.jpg  ->  served from /images/logo.jpg
+const LOGO_SRC = "/images/logo2.jpeg";
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -80,171 +82,182 @@ export default function Header() {
   }, []);
 
   return (
-    <header
-      className={`sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur-md transition-shadow duration-300 ${
-        scrolled
-          ? "border-blue-100 shadow-[0_4px_24px_-8px_rgba(7,82,160,0.25)]"
-          : "border-blue-100/70 shadow-none"
-      }`}
-    >
-      <div className="mx-auto flex h-[64px] max-w-[1440px] items-center justify-between gap-3 px-4 sm:h-[72px] sm:px-6 lg:px-8 xl:h-[78px] xl:px-10">
-        {/* Logo */}
-        <a
-          href="#home"
-          onClick={() => setMenuOpen(false)}
-          className="flex shrink-0 items-center gap-1.5 sm:gap-2"
-          aria-label="Balaji Pest Control Home"
+    <>
+      {/* Dim backdrop behind the mobile menu (tap to close) */}
+      <div
+        onClick={() => setMenuOpen(false)}
+        aria-hidden="true"
+        className={`fixed inset-0 z-40 bg-[#06223F]/40 backdrop-blur-[2px] transition-opacity duration-300 xl:hidden ${menuOpen ? "opacity-100" : "pointer-events-none opacity-0"
+          }`}
+      />
+
+      <header
+        className={`sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur-md transition-all duration-300 ${scrolled
+          ? "border-blue-100 shadow-[0_6px_24px_-10px_rgba(7,82,160,0.35)]"
+          : "border-blue-100/60 shadow-none"
+          }`}
+      >
+        {/* Brand accent line */}
+        <div className="h-[3px] w-full bg-gradient-to-r from-[#073F82] via-[#0756A7] to-[#169B45]" />
+
+        <div
+          className={`mx-auto flex max-w-[1440px] items-center justify-between gap-3 px-4 transition-[height] duration-300 sm:px-6 lg:px-8 xl:px-10 ${"h-[68px] sm:h-[76px] xl:h-[84px]"
+            }`}
         >
-          <svg
-            viewBox="0 0 76 70"
-            className="h-[48px] w-[52px] sm:h-[56px] sm:w-[61px] xl:h-[62px] xl:w-[68px]"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            <path d="M4 29L38 4L72 29H57L38 15L19 29H4Z" fill="#07509B" />
-            <path d="M14 29H62V49L38 66L14 49V29Z" fill="#07509B" />
-            <path
-              d="M38 31C30 31 23 37 23 44C23 53 31 59 38 62C45 59 53 53 53 44C53 37 46 31 38 31Z"
-              fill="#169B45"
-            />
-            <path
-              d="M38 35L41 44L49 39L44 47L49 53L40 51L35 59L34 49L26 46L35 43L38 35Z"
-              fill="white"
-            />
-          </svg>
-
-          <div className="flex flex-col leading-none">
-            <span className="text-[22px] font-extrabold tracking-[-1px] text-[#08478B] sm:text-[26px] xl:text-[30px]">
-              BALAJI
-            </span>
-            <span className="mt-1 text-[10.5px] font-extrabold tracking-[0.2px] text-[#08478B] sm:text-[13px] xl:text-[15px]">
-              PEST CONTROL
-            </span>
-          </div>
-        </a>
-
-        {/* Desktop Navigation (xl and up) */}
-        <nav
-          className="hidden items-center gap-7 xl:flex 2xl:gap-9"
-          aria-label="Main navigation"
-        >
-          {navLinks.map((link) => {
-            const isActive = active === link.href;
-            return (
-              <a
-                key={link.name}
-                href={link.href}
-                aria-current={isActive ? "true" : undefined}
-                className={`group relative whitespace-nowrap py-2 text-[13px] font-semibold transition-colors duration-200 ${
-                  isActive
-                    ? "text-[#0752A0]"
-                    : "text-[#101C30] hover:text-[#0752A0]"
-                }`}
-              >
-                {link.name}
-                <span
-                  className={`absolute -bottom-[5px] left-0 h-[2px] w-full origin-left rounded-full bg-[#0752A0] transition-transform duration-300 ${
-                    isActive
-                      ? "scale-x-100"
-                      : "scale-x-0 group-hover:scale-x-100"
-                  }`}
-                />
-              </a>
-            );
-          })}
-        </nav>
-
-        {/* Right side actions */}
-        <div className="flex items-center gap-2 sm:gap-3">
-          {/* Call Now: compact on phones, full on sm+ ; tap opens dialer */}
+          {/* Logo */}
           <a
-            href={PHONE_HREF}
-            aria-label={`Call now ${PHONE_DISPLAY}`}
-            className="inline-flex h-10 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#0756A7] to-[#073F82] px-3.5 text-[13px] font-bold text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg active:scale-95 sm:h-[42px] sm:px-6"
+            href="#home"
+            onClick={() => setMenuOpen(false)}
+            className="flex shrink-0 items-center rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0752A0] focus-visible:ring-offset-2"
+            aria-label="Balaji Pest Control - Home"
           >
-            <PhoneIcon />
-            <span className="hidden min-[400px]:inline">Call Now</span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={LOGO_SRC}
+              alt="Balaji Pest Control logo"
+              className="h-[56px] w-auto select-none rounded-md object-contain sm:h-[62px] xl:h-[70px]"
+              draggable={false}
+              fetchPriority="high"
+            />
           </a>
 
-          {/* Hamburger (below xl) */}
-          <button
-            type="button"
-            onClick={() => setMenuOpen((o) => !o)}
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={menuOpen}
-            aria-controls="mobile-menu"
-            className="flex h-10 w-10 items-center justify-center rounded-lg border border-blue-100 text-[#0752A0] transition-colors hover:bg-blue-50 active:bg-blue-100 xl:hidden"
+          {/* Desktop Navigation (xl and up) */}
+          <nav
+            className="hidden items-center gap-6 xl:flex 2xl:gap-9"
+            aria-label="Main navigation"
           >
-            <svg
-              viewBox="0 0 24 24"
-              className="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              aria-hidden="true"
-            >
-              {menuOpen ? (
-                <path d="M18 6L6 18M6 6l12 12" />
-              ) : (
-                <path d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile / Tablet Navigation */}
-      <div
-        id="mobile-menu"
-        aria-hidden={!menuOpen}
-        className={`grid transition-[grid-template-rows] duration-300 ease-out xl:hidden ${
-          menuOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-        }`}
-      >
-        <div className="overflow-hidden">
-          <div className="max-h-[calc(100dvh-64px)] overflow-y-auto border-t border-blue-100 bg-white px-4 pb-5 pt-2 shadow-lg sm:max-h-[calc(100dvh-72px)] sm:px-6">
-            <nav
-              className="mx-auto flex max-w-xl flex-col"
-              aria-label="Mobile navigation"
-            >
-              {navLinks.map((link) => {
-                const isActive = active === link.href;
-                return (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    tabIndex={menuOpen ? 0 : -1}
-                    onClick={() => setMenuOpen(false)}
-                    className={`flex items-center justify-between border-b border-gray-100 py-3.5 text-[15px] font-semibold transition-colors ${
-                      isActive
-                        ? "text-[#0752A0]"
-                        : "text-[#142B49] hover:text-[#0752A0]"
+            {navLinks.map((link) => {
+              const isActive = active === link.href;
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  aria-current={isActive ? "true" : undefined}
+                  className={`group relative whitespace-nowrap py-2 text-[13.5px] font-semibold tracking-[0.1px] transition-colors duration-200 focus:outline-none focus-visible:text-[#0752A0] ${isActive
+                    ? "text-[#0752A0]"
+                    : "text-[#0F2540] hover:text-[#0752A0]"
                     }`}
-                  >
-                    {link.name}
-                    <span
-                      className={`h-1.5 w-1.5 rounded-full bg-[#0752A0] transition-opacity ${
-                        isActive ? "opacity-100" : "opacity-0"
+                >
+                  {link.name}
+                  <span
+                    className={`absolute -bottom-[4px] left-0 h-[2px] w-full origin-left rounded-full bg-gradient-to-r from-[#0752A0] to-[#169B45] transition-transform duration-300 ${isActive
+                      ? "scale-x-100"
+                      : "scale-x-0 group-hover:scale-x-100"
                       }`}
-                    />
-                  </a>
-                );
-              })}
+                  />
+                </a>
+              );
+            })}
+          </nav>
 
-              <a
-                href={PHONE_HREF}
-                tabIndex={menuOpen ? 0 : -1}
-                className="mt-5 flex h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#0756A7] to-[#073F82] text-[15px] font-bold text-white shadow-md active:scale-[0.98]"
+          {/* Right side actions */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Call Now: compact on phones, full on sm+ ; tap opens dialer */}
+            <a
+              href={PHONE_HREF}
+              aria-label={`Call now ${PHONE_DISPLAY}`}
+              className="inline-flex h-10 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#0756A7] to-[#073F82] px-3.5 text-[13px] font-bold text-white shadow-[0_6px_16px_-6px_rgba(7,82,160,0.7)] ring-1 ring-inset ring-white/10 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_22px_-6px_rgba(7,82,160,0.75)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0752A0] focus-visible:ring-offset-2 active:scale-95 sm:h-[44px] sm:px-5 lg:px-6"
+            >
+              <PhoneIcon />
+              <span className="hidden min-[400px]:inline">Call Now</span>
+              <span className="hidden border-l border-white/30 pl-2 font-semibold tracking-wide 2xl:inline">
+                {PHONE_DISPLAY}
+              </span>
+            </a>
+
+            {/* Hamburger (below xl) */}
+            <button
+              type="button"
+              onClick={() => setMenuOpen((o) => !o)}
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-menu"
+              className="flex h-10 w-10 items-center justify-center rounded-lg border border-blue-100 bg-white text-[#0752A0] transition-colors hover:bg-blue-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0752A0] active:bg-blue-100 sm:h-[44px] sm:w-[44px] xl:hidden"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                className="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                aria-hidden="true"
               >
-                <PhoneIcon className="h-[18px] w-[18px]" />
-                Call Now: {PHONE_DISPLAY}
-              </a>
-            </nav>
+                {menuOpen ? (
+                  <path d="M18 6L6 18M6 6l12 12" />
+                ) : (
+                  <path d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
           </div>
         </div>
-      </div>
-    </header>
+
+        {/* Mobile / Tablet Navigation */}
+        <div
+          id="mobile-menu"
+          aria-hidden={!menuOpen}
+          className={`grid transition-[grid-template-rows] duration-300 ease-out xl:hidden ${menuOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+            }`}
+        >
+          <div className="overflow-hidden">
+            <div className="max-h-[calc(100dvh-80px)] overflow-y-auto overscroll-contain border-t border-blue-100 bg-white px-4 pb-6 pt-2 shadow-xl sm:max-h-[calc(100dvh-92px)] sm:px-6">
+              <nav
+                className="mx-auto flex max-w-xl flex-col"
+                aria-label="Mobile navigation"
+              >
+                {navLinks.map((link) => {
+                  const isActive = active === link.href;
+                  return (
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      tabIndex={menuOpen ? 0 : -1}
+                      onClick={() => setMenuOpen(false)}
+                      className={`flex items-center justify-between border-b border-gray-100 px-1 py-3.5 text-[15px] font-semibold transition-colors ${isActive
+                        ? "text-[#0752A0]"
+                        : "text-[#142B49] hover:text-[#0752A0]"
+                        }`}
+                    >
+                      <span className="flex items-center gap-3">
+                        <span
+                          className={`h-5 w-[3px] rounded-full transition-colors ${isActive ? "bg-[#169B45]" : "bg-transparent"
+                            }`}
+                        />
+                        {link.name}
+                      </span>
+                      <svg
+                        viewBox="0 0 24 24"
+                        className={`h-4 w-4 transition-all ${isActive
+                          ? "text-[#0752A0] opacity-100"
+                          : "text-gray-300 opacity-70"
+                          }`}
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M9 6l6 6-6 6" />
+                      </svg>
+                    </a>
+                  );
+                })}
+
+                <a
+                  href={PHONE_HREF}
+                  tabIndex={menuOpen ? 0 : -1}
+                  className="mt-5 flex h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#0756A7] to-[#073F82] text-[15px] font-bold text-white shadow-md active:scale-[0.98]"
+                >
+                  <PhoneIcon className="h-[18px] w-[18px]" />
+                  Call Now: {PHONE_DISPLAY}
+                </a>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </header>
+    </>
   );
 }
