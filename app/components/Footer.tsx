@@ -142,7 +142,8 @@ function FooterHeading({ children }: { children: React.ReactNode }) {
     );
 }
 
-export default function Footer() {
+export default async function Footer() {
+    'use cache';
     const year = new Date().getFullYear();
 
     return (
